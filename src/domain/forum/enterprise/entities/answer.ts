@@ -3,7 +3,7 @@ import { AnswerAttachmentsList } from "./answer-attachments-list";
 import { AggregateRoot } from "@/core/entities/aggregate-root";
 import { Optional } from "@/core/types/optional";
 
-interface AnswerProps {
+export interface AnswerProps {
     content: string;
     attachments?: AnswerAttachmentsList;
     createdAt: Date;

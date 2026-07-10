@@ -1,7 +1,7 @@
-import { Entity } from "@/core/entities/entitiy";
 import { UniqueEntityID } from "@/core/entities/unique-entity-id";
+import { Entity } from "@/core/entities/entitiy";
 
-interface AnswerAttachmentProps {
+export interface AnswerAttachmentProps {
     attachmentId: UniqueEntityID;
     answerId: UniqueEntityID;
 }

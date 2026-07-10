@@ -4,11 +4,11 @@ import { QuestionAttachmentsList } from "./question-attachments-list";
 import { AggregateRoot } from "@/core/entities/aggregate-root";
 import { Optional } from "@/core/types/optional";
 
-interface QuestionProps {
+export interface QuestionProps {
     title: string;
     content: string;
-    attachments?: QuestionAttachmentsList;
-    slug?: Slug;
+    attachments: QuestionAttachmentsList;
+    slug: Slug;
     createdAt: Date;
     updatedAt?: Date;
     bestAnswerId?: UniqueEntityID;
@@ -52,10 +52,26 @@ export class Question extends AggregateRoot<QuestionProps> {
         this.props.updatedAt = new Date();
     }
 
-    static create(props: Optional<QuestionProps, "createdAt">, id?: UniqueEntityID) {
+    set title(title: string) {
+        this.props.title = title;
+    }
+
+    set content(content: string) {
+        this.props.content = content;
+    }
+
+    set attachments(attachments: QuestionAttachmentsList) {
+        this.props.attachments = attachments;
+    }
+
+    static create(
+        props: Optional<QuestionProps, "createdAt" | "attachments" | "slug">,
+        id?: UniqueEntityID
+    ) {
         const question = new Question({
             createdAt: new Date(),
             slug: new Slug(props.title),
+            attachments: props.attachments ?? new QuestionAttachmentsList(),
             ...props,
         }, id);
 
