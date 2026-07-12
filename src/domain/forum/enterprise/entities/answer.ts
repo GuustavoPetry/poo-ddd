@@ -5,7 +5,7 @@ import { Optional } from "@/core/types/optional";
 
 export interface AnswerProps {
     content: string;
-    attachments?: AnswerAttachmentsList;
+    attachments: AnswerAttachmentsList;
     createdAt: Date;
     updatedAt?: Date;
     authorId: UniqueEntityID;
@@ -33,13 +33,26 @@ export class Answer extends AggregateRoot<AnswerProps> {
         return this.props.authorId;
     }
 
+    get questionId() {
+        return this.props.questionId;
+    }
+
     touch(): void {
         this.props.updatedAt = new Date();
     }
 
-    static create(props: Optional<AnswerProps, "createdAt">, id?: UniqueEntityID) {
+    set content(content: string) {
+        this.props.content = content;
+    }
+
+    set attachments(attachments: AnswerAttachmentsList) {
+        this.props.attachments = attachments;
+    }
+
+    static create(props: Optional<AnswerProps, "createdAt" | "attachments">, id?: UniqueEntityID) {
         const answer = new Answer({
             createdAt: new Date(),
+            attachments: props.attachments ?? new AnswerAttachmentsList(),
             ...props,
         }, id);
 

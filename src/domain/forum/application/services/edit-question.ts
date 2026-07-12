@@ -7,6 +7,7 @@ import { QuestionAttachment } from "../../enterprise/entities/question-attachmen
 import { UniqueEntityID } from "@/core/entities/unique-entity-id";
 import { QuestionAttachmentsList } from "../../enterprise/entities/question-attachments-list";
 import { QuestionAttachmentRepo } from "../repositories/question-attachments-repo";
+import { Slug } from "../../enterprise/entities/value-objects/slug";
 
 interface EditQuestionRequest {
     questionId: string;
@@ -48,7 +49,7 @@ export class EditQuestionService {
             const attachmentList = new QuestionAttachmentsList(currentAttachments);
 
             const newAttachments = attachmentIds.map((attachmentId) => {
-                return new QuestionAttachment({
+                return QuestionAttachment.create({
                     attachmentId: new UniqueEntityID(attachmentId),
                     questionId: question.id,
                 });
@@ -59,7 +60,15 @@ export class EditQuestionService {
             question.attachments = attachmentList;
         }
 
-        question.title = title ?? question.title;
+        if (
+            title !== undefined &&
+            title !== null &&
+            title !== ""
+        ) {
+            question.title = title;
+            question.slug = new Slug(title);
+        }
+
         question.content = content ?? question.content;
 
         await this.questionRepo.save(question);

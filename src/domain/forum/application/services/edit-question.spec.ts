@@ -33,6 +33,8 @@ describe("Edit Question Service", () => {
 
         await inMemoryQuestionRepo.create(question);
 
+        expect(inMemoryQuestionAttachmentRepo.items).toHaveLength(2);
+
         const result = await sut.execute({
             title: "edit question",
             content: "question content",

@@ -26,8 +26,8 @@ export class InMemoryAnswerAttachmentRepo implements AnswerAttachmentRepo {
         });
     }
 
-    async findManyByAnswerId(answerId: string): Promise<AnswerAttachment[] | null> {
-        return this.items.filter((a) => a.answerId.equals(answerId)) ?? null;
+    async findManyByAnswerId(answerId: string): Promise<AnswerAttachment[]> {
+        return this.items.filter((a) => a.answerId.equals(answerId));
     }
 
     async deleteManyByAnswerId(answerId: string): Promise<void> {

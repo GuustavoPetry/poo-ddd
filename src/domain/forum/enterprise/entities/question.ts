@@ -11,7 +11,7 @@ export interface QuestionProps {
     slug: Slug;
     createdAt: Date;
     updatedAt?: Date;
-    bestAnswerId?: UniqueEntityID;
+    bestAnswerId?: UniqueEntityID | undefined;
     authorId: UniqueEntityID;
 }
 
@@ -62,6 +62,14 @@ export class Question extends AggregateRoot<QuestionProps> {
 
     set attachments(attachments: QuestionAttachmentsList) {
         this.props.attachments = attachments;
+    }
+
+    set slug(value: Slug) {
+        this.props.slug = value;
+    }
+
+    set bestAnswerId(answerId: UniqueEntityID | undefined) {
+        this.props.bestAnswerId = answerId;
     }
 
     static create(

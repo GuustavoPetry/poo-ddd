@@ -2,15 +2,15 @@ import { Entity } from "@/core/entities/entitiy";
 import { UniqueEntityID } from "@/core/entities/unique-entity-id";
 
 export interface CommentProps {
-    comment: string;
+    content: string;
     createdAt: Date;
     udpatedAt?: Date;
     authorId: UniqueEntityID;
 }
 
 export abstract class Comment<Props extends CommentProps> extends Entity<Props> {
-    get comment() {
-        return this.props.comment
+    get content() {
+        return this.props.content;
     }
 
     get authorId() {
@@ -27,6 +27,11 @@ export abstract class Comment<Props extends CommentProps> extends Entity<Props> 
 
     touch() {
         this.props.udpatedAt = new Date();
+    }
+
+    set content(content: string) {
+        this.props.content = content;
+        this.touch();
     }
 
 }

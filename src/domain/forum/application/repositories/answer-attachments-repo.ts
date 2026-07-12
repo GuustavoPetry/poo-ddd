@@ -7,7 +7,7 @@ export interface AnswerAttachmentRepo {
 
     delete(answerAttachments: AnswerAttachment[]): Promise<void>;
 
-    findManyByAnswerId(answerId: string): Promise<AnswerAttachment[] | null>;
+    findManyByAnswerId(answerId: string): Promise<AnswerAttachment[]>;
 
     deleteManyByAnswerId(answerId: string): Promise<void>;
 }

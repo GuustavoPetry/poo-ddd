@@ -30,6 +30,8 @@ export class InMemoryQuestionRepo implements QuestionRepo {
         const itemIndex = this.items.findIndex((a) => a.equals(question));
 
         this.items.splice(itemIndex, 1);
+
+        await this.questionAttachmentRepo.deleteManyByQuestionId(question.id.toString());
     }
 
     async findById(id: string): Promise<Question | null> {
