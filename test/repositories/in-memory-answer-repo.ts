@@ -31,6 +31,8 @@ export class InMemoryAnswerRepo implements AnswerRepo {
         await this.answerAttachmentRepo.create(answer.attachments.new);
         await this.answerAttachmentRepo.delete(answer.attachments.removed);
 
+        DomainEvents.dispatchEventsForAggregate(answer);
+
         return answer;
     }
 

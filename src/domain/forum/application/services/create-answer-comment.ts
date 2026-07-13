@@ -4,6 +4,7 @@ import { AnswerComment } from "../../enterprise/entities/answer-comment";
 import { AnswerRepo } from "../repositories/answer-repo";
 import { AnswerCommentRepo } from "../repositories/answer-comments-repo";
 import { UniqueEntityID } from "@/core/entities/unique-entity-id";
+import { AnswerCommentCreatedEvent } from "../../enterprise/events/answer-comment-created-event";
 
 interface CreateAnswerCommentRequest {
     content: string;
@@ -39,7 +40,10 @@ export class CreateAnswerCommentService {
             authorId: new UniqueEntityID(authorId),
         });
 
+        answer.addDomainEvent(new AnswerCommentCreatedEvent(comment, answer.authorId));
+
         await this.answerCommentRepo.create(comment);
+        await this.answerRepo.save(answer);
 
         return rigth({ comment });
     }
