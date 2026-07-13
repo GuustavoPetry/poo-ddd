@@ -1,3 +1,4 @@
+import { DomainEvents } from "@/core/events/DomainEvents";
 import { QuestionAttachmentRepo } from "@/domain/forum/application/repositories/question-attachments-repo";
 import { QuestionRepo } from "@/domain/forum/application/repositories/question-repo";
 import { Question } from "@/domain/forum/enterprise/entities/question";
@@ -22,6 +23,8 @@ export class InMemoryQuestionRepo implements QuestionRepo {
 
         await this.questionAttachmentRepo.create(question.attachments.new);
         await this.questionAttachmentRepo.delete(question.attachments.removed);
+
+        DomainEvents.dispatchEventsForAggregate(question);
 
         return question;
     }

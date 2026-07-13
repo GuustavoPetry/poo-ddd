@@ -3,6 +3,7 @@ import { Slug } from "./value-objects/slug";
 import { QuestionAttachmentsList } from "./question-attachments-list";
 import { AggregateRoot } from "@/core/entities/aggregate-root";
 import { Optional } from "@/core/types/optional";
+import { ChoosedBestAnswerToQuestionEvent } from "../events/choosed-best-answer-to-question-event";
 
 export interface QuestionProps {
     title: string;
@@ -70,6 +71,8 @@ export class Question extends AggregateRoot<QuestionProps> {
 
     set bestAnswerId(answerId: UniqueEntityID | undefined) {
         this.props.bestAnswerId = answerId;
+
+        this.addDomainEvent(new ChoosedBestAnswerToQuestionEvent(this));
     }
 
     static create(
