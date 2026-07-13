@@ -1,10 +1,10 @@
-import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment";
+import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment-repo";
 import { InMemoryQuestionRepo } from "@test/repositories/in-memory-question-repo";
 import { beforeEach, describe, expect, it } from "vitest";
 import { makeQuestion } from "@test/factories/make-question";
 import { InMemoryAnswerRepo } from "@test/repositories/in-memory-answer-repo";
-import { InMemoryAnswerAttachmentRepo } from "@test/repositories/in-memory-answer-attachment";
-import { InMemoryAnswerCommentRepo } from "@test/repositories/in-memory-answer-comment";
+import { InMemoryAnswerAttachmentRepo } from "@test/repositories/in-memory-answer-attachment-repo";
+import { InMemoryAnswerCommentRepo } from "@test/repositories/in-memory-answer-comment-repo";
 import { CreateAnswerToQuestionService } from "./create-answer-to-question";
 
 let inMemoryQuestionAttachmentRepo: InMemoryQuestionAttachmentRepo;

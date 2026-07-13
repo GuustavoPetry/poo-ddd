@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { InMemoryAnswerRepo } from "@test/repositories/in-memory-answer-repo";
-import { InMemoryAnswerAttachmentRepo } from "@test/repositories/in-memory-answer-attachment";
-import { InMemoryAnswerCommentRepo } from "@test/repositories/in-memory-answer-comment";
-import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment";
+import { InMemoryAnswerAttachmentRepo } from "@test/repositories/in-memory-answer-attachment-repo";
+import { InMemoryAnswerCommentRepo } from "@test/repositories/in-memory-answer-comment-repo";
+import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment-repo";
 import { InMemoryQuestionRepo } from "@test/repositories/in-memory-question-repo";
 import { ChooseBestAnswerToQuestionService } from "./choose-best-answer-to-question";
 import { makeAnswer } from "@test/factories/make-answer";

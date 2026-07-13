@@ -1,11 +1,11 @@
 import { InMemoryAnswerRepo } from "@test/repositories/in-memory-answer-repo";
 import { describe, expect, it, beforeEach } from "vitest";
-import { InMemoryAnswerAttachmentRepo } from "@test/repositories/in-memory-answer-attachment";
+import { InMemoryAnswerAttachmentRepo } from "@test/repositories/in-memory-answer-attachment-repo";
 import { makeAnswer } from "@test/factories/make-answer";
 import { EditAnswerService } from "./edit-answer";
 import { UniqueEntityID } from "@/core/entities/unique-entity-id";
 import { AnswerAttachment } from "../../enterprise/entities/answer-attachment";
-import { InMemoryAnswerCommentRepo } from "@test/repositories/in-memory-answer-comment";
+import { InMemoryAnswerCommentRepo } from "@test/repositories/in-memory-answer-comment-repo";
 
 let inMemoryAnswerAttachmentRepo: InMemoryAnswerAttachmentRepo;
 let inMemoryAnswerCommentRepo: InMemoryAnswerCommentRepo;

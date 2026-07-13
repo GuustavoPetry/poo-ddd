@@ -1,7 +1,7 @@
 import { InMemoryQuestionRepo } from "@test/repositories/in-memory-question-repo";
 import { describe, expect, it, beforeEach } from "vitest";
 import { CreateQuestionService } from "./create-question";
-import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment";
+import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment-repo";
 
 let inMemoryQuestionAttachmentRepo: InMemoryQuestionAttachmentRepo;
 let inMemoryQuestionRepo: InMemoryQuestionRepo;

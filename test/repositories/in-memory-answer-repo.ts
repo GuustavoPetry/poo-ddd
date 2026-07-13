@@ -1,3 +1,5 @@
+import { DomainEvents } from "@/core/events/DomainEvents";
+import { PaginationParams } from "@/core/repositories/pagination-params";
 import { AnswerAttachmentRepo } from "@/domain/forum/application/repositories/answer-attachments-repo";
 import { AnswerCommentRepo } from "@/domain/forum/application/repositories/answer-comments-repo";
 import { AnswerRepo } from "@/domain/forum/application/repositories/answer-repo";
@@ -15,6 +17,8 @@ export class InMemoryAnswerRepo implements AnswerRepo {
         this.items.push(answer);
 
         await this.answerAttachmentRepo.create(answer.attachments.initial);
+
+        DomainEvents.dispatchEventsForAggregate(answer);
 
         return answer;
     }
@@ -41,5 +45,17 @@ export class InMemoryAnswerRepo implements AnswerRepo {
 
     async findById(id: string): Promise<Answer | null> {
         return this.items.find((answer) => answer.id.toString() === id) ?? null;
+    }
+
+    async findManyByQuestionId(questionId: string, { page }: PaginationParams): Promise<Answer[]> {
+        const answers = this.items
+            .filter((answer) => answer.questionId.equals(questionId))
+            .slice((page - 1) * 20, page * 20);
+
+        return answers;
+    }
+
+    async deleteManyByQuestionId(questionId: string): Promise<void> {
+        this.items = this.items.filter((answer) => !answer.questionId.equals(questionId));
     }
 }

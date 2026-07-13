@@ -1,6 +1,6 @@
 import { InMemoryQuestionRepo } from "@test/repositories/in-memory-question-repo";
 import { describe, expect, it, beforeEach } from "vitest";
-import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment";
+import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment-repo";
 import { makeQuestion } from "@test/factories/make-question";
 import { EditQuestionService } from "./edit-question";
 import { UniqueEntityID } from "@/core/entities/unique-entity-id";

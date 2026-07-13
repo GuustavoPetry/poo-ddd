@@ -1,10 +1,10 @@
-import { InMemoryAnswerAttachmentRepo } from "@test/repositories/in-memory-answer-attachment";
+import { InMemoryAnswerAttachmentRepo } from "@test/repositories/in-memory-answer-attachment-repo";
 import { InMemoryAnswerRepo } from "@test/repositories/in-memory-answer-repo";
 import { beforeEach, describe, expect, it } from "vitest";
 import { makeAnswer } from "@test/factories/make-answer";
 import { UniqueEntityID } from "@/core/entities/unique-entity-id";
 import { makeAnswerAttachment } from "@test/factories/make-answer-attachment";
-import { InMemoryAnswerCommentRepo } from "@test/repositories/in-memory-answer-comment";
+import { InMemoryAnswerCommentRepo } from "@test/repositories/in-memory-answer-comment-repo";
 import { makeAnswerComment } from "@test/factories/make-answer-comment";
 import { DeleteAnswerCommentService } from "./delete-answer-comment";
 

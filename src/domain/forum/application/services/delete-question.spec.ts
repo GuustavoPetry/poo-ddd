@@ -1,4 +1,4 @@
-import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment";
+import { InMemoryQuestionAttachmentRepo } from "@test/repositories/in-memory-question-attachment-repo";
 import { InMemoryQuestionRepo } from "@test/repositories/in-memory-question-repo";
 import { beforeEach, describe, expect, it } from "vitest";
 import { DeleteQuestionService } from "./delete-question";

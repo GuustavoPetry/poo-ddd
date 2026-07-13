@@ -8,7 +8,7 @@ export function makeAnswerComment(
     id?: UniqueEntityID,
 ) {
     const answercomment = AnswerComment.create({
-        comment: faker.lorem.sentences(8),
+        content: faker.lorem.sentences(8),
         answerId: new UniqueEntityID(randomUUID()),
         authorId: new UniqueEntityID(randomUUID()),
         createdAt: new Date(),
